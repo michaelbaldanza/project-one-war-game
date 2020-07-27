@@ -7,12 +7,24 @@ class Card {
 };
 
 class Deck {
-    constructor(topCard, nOfCards, contents) {
-        this.topCard = topCard;
+    constructor(contents) {
         this.contents = [];
-        this.nOfCards = contents.length;
     };
+    getTopCard() {
+        return contents[0];
+    };
+    addCard(card) {
+        this.contents.push(card);
+    };
+    splitRandomly() {};
+
 };
+
+
+const masterDeck = new Deck();
+masterDeck.addCard(n01);
+masterDeck.addCard(n02);
+
 
 const n01 = new Card('Ace of Diamonds', 'dA', 14);
 const n02 = new Card('King of Diamonds', 'dK', 13);
