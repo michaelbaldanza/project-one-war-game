@@ -1,4 +1,4 @@
-//
+
 
 class Card {
     constructor(cssname, cardname, value) {
@@ -8,7 +8,7 @@ class Card {
     };
 };
 
-//
+
 let mDeck = [
     new Card('Ace of Diamonds', 'dA', 14),
     new Card('King of Diamonds', 'dK', 13),
@@ -66,10 +66,47 @@ let mDeck = [
     new Card('Black Joker', 'bJ', 15),
 ];
 
-let p1Deck = mDeck.splice(27, 27);
-let p2Deck = mDeck.splice(55, 27);
 
-console.log(p1Deck);
+
+function shuffle(inputDeck) {
+    let outputDeck = [];
+    while (inputDeck.length>0) {
+        let randomIndex = Math.floor(Math.random() * inputDeck.length);
+        let randomCard  = inputDeck[randomIndex];
+        inputDeck.splice(randomIndex, 1);
+        outputDeck.push(randomCard);
+        // console.log(randomCard);
+        // console.log(randomIndex);
+    };
+
+
+
+    // for (i=0; i<inputDeck.length; i++) {
+
+    // }
+    return outputDeck;
+}
+
+mDeck = shuffle(mDeck);
+console.dir(mDeck);
+
+
+// let p1Deck = mDeck.splice(27, 27);
+// let p2Deck = mDeck.splice(0, 27);
+// let p1Discard = [];
+// let p2Discard = [];
+
+// function takeTurn() {
+//     if (p1Deck[0].value > p2Deck[0].value) {
+//         let transferCard = p1Deck.shift();
+//         let transferCard2 = p2Deck.shift();
+//         p1Deck.push(transferCard);
+//         p1Deck.push(transferCard2);
+//    } //else if ....
+
+//     //else war
+//     //}
+// };
 
 // masterDeck[30].cardname;
 // console.log(masterDeck.filter(x => x.cardname === 'Ace of Diamonds').length);
