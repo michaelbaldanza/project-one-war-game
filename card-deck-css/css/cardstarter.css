@@ -304,10 +304,12 @@
 .card.joker {
   background-image: url("../images/jokers/joker.svg"); }
 
-.card.joker-black {
+.card.joker-black,
+.card.bJ {
   background-image: url("../images/jokers/joker-black.svg"); }
 
-.card.joker-red {
+.card.joker-red,
+.card.rJ {
   background-image: url("../images/jokers/joker-red.svg"); }
 
 .card.back {
