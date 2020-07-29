@@ -1,17 +1,24 @@
 body {
-    max-width: 100vh;
+    /* max-width: 100vh; */
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    height: 100vh;
+    top: 0;
 }
 
 section {
     display: grid;
+    /* grid-template-columns: repeat(6, 16.66%);
+    grid-template-rows: repeat(8 , 12.5%); */
     grid-template-columns: repeat(8, 12.5%);
     grid-template-rows: repeat(8, 12.5%);
-    grid-gap: 10px;
+    /* grid-gap: 10px; */
 }
 
-.space {
+/* span {
     /* padding: 20px 16px 20px 16px;
     border: 1px black solid; */
-    margin: 10px;
-}
+    /* margin: 10px; */
+/* } */
 

@@ -1,4 +1,4 @@
-
+// card info
 
 class Card {
     constructor(cssname, cardname, value) {
@@ -8,8 +8,12 @@ class Card {
     };
 };
 
+// app's state
 
-let mDeck = [
+let mDeck, p1Deck, p1Discard, p2Deck, p2Discard;
+
+
+mDeck = [
     new Card('Ace of Diamonds', 'dA', 14),
     new Card('King of Diamonds', 'dK', 13),
     new Card('Queen of Diamonds', 'dQ', 12),
@@ -66,8 +70,6 @@ let mDeck = [
     new Card('Black Joker', 'bJ', 15),
 ];
 
-
-
 function shuffle(inputDeck) {
     let outputDeck = [];
     while (inputDeck.length>0) {
@@ -90,23 +92,68 @@ function shuffle(inputDeck) {
 mDeck = shuffle(mDeck);
 console.dir(mDeck);
 
+p1Deck = mDeck.splice(27, 27);
+p2Deck = mDeck.splice(0, 27);
 
-// let p1Deck = mDeck.splice(27, 27);
-// let p2Deck = mDeck.splice(0, 27);
-// let p1Discard = [];
-// let p2Discard = [];
+console.log(p1Deck);
+console.log(p2Deck);
 
-// function takeTurn() {
-//     if (p1Deck[0].value > p2Deck[0].value) {
-//         let transferCard = p1Deck.shift();
-//         let transferCard2 = p2Deck.shift();
-//         p1Deck.push(transferCard);
-//         p1Deck.push(transferCard2);
-//    } //else if ....
+// cached element references
 
-//     //else war
-//     //}
-// };
+const p1DeckEl = document.getElementById('player1deck');
+const p1DiscardEl = document.getElementById('player1discard');
+const p1DecisionEl = document.getElementById('player1decision');
+const p1War1El = document.getElementById('player1war1');
+const p1War2El = document.getElementById('player1war2');
+const p1War3El = document.getElementById('player1war3');
+const p1RevealEl = document.getElementById('player1reveal');
+
+const p2DeckEl = document.getElementById('player2deck');
+const p2DiscardEl = document.getElementById('player2discard');
+const p2DecisionEl = document.getElementById('player2decision');
+const p2War1El = document.getElementById('player2war2');
+const p2War2El = document.getElementById('player2war2');
+const p2War3El = document.getElementById('player2war3');
+const p2RevealEl = document.getElementById('player2reveal');
+
+// event listeners
+
+
+
+function reveal() {
+
+}
+
+function play() {
+    if (p1Deck[0].value > p2Deck[0].value) {
+        let transferCard = p1Deck.shift();
+        let transferCard2 = p2Deck.shift();
+        p1Discard.push(transferCard);
+        p1Discard.push(transferCard2);
+
+//modify to allow for tie condition in war
+
+   } else {
+    let transferCard = p1Deck.shift();
+    let transferCard2 = p2Deck.shift();
+    p2Discard.push(transferCard);
+    p2Discard.push(transferCard2);
+   }
+
+};
+
+function takeTurn() {
+    play();
+    if (p1Deck === 0) {
+        p1discard
+    }
+}
+
+function reshuffle() {
+    if (p1Deck == 0) {
+
+    }
+}
 
 // masterDeck[30].cardname;
 // console.log(masterDeck.filter(x => x.cardname === 'Ace of Diamonds').length);
