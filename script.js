@@ -116,6 +116,10 @@ const p2War2El = document.getElementById('player2war2');
 const p2War3El = document.getElementById('player2war3');
 const p2RevealEl = document.getElementById('player2reveal');
 
+p2War2El.classList.add('s06');
+
+// p2War2El.classList.add(p2Deck[0](this.cssname));
+
 // event listeners
 
 
