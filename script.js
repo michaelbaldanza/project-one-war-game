@@ -1,12 +1,24 @@
 // card info
 
 class Card {
-    constructor(cssname, cardname, value) {
+    constructor(cardname, cssname, value) {
         this.cardname = cardname;
         this.cssname = cssname;
         this.value = value;
     };
+    addClass () {
+        return this.cssname;
+    };
+    getValue () {
+        return this.value;
+    }
 };
+
+// const aceOfDiamonds= [
+//     name: 'Aceof Diamonds',
+//     cssName: 'aceofdiamonds',
+//     value: 14;
+// ]
 
 // app's state
 
@@ -14,60 +26,60 @@ let mDeck, p1Deck, p1Discard, p2Deck, p2Discard;
 
 
 mDeck = [
-    new Card('Ace of Diamonds', 'card diamonds A', 14),
-    new Card('King of Diamonds', 'card diamonds K', 13),
-    new Card('Queen of Diamonds', 'card diamonds Q', 12),
-    new Card('Jack of Diamonds', 'card diamonds J', 11),
-    new Card('Ten of Diamonds', 'card diamonds r10', 10),
-    new Card('Nine of Diamonds', 'card diamonds r09', 9),
-    new Card('Eight of Diamonds', 'card diamonds r08', 8),
-    new Card('Seven of Diamonds', 'card diamonds r07', 7),
-    new Card('Six of Diamonds', 'card diamonds r06', 6),
-    new Card('Five of Diamonds', 'card diamonds r05', 5),
-    new Card('Four of Diamonds', 'card diamonds r04', 4),
-    new Card('Three of Diamonds', 'card diamonds r03', 3),
-    new Card('Two of Diamonds', 'card diamonds r02', 2),
-    new Card('Ace of Hearts', 'card hearts A', 14),
-    new Card('King of Hearts', 'card hearts K', 13),
-    new Card('Queen of Hearts', 'card hearts Q', 12),
-    new Card('Jack of Hearts', 'card hearts J', 11),
-    new Card('Ten of Hearts', 'card hearts r10', 10),
-    new Card('Nine of Hearts', 'card hearts r09', 9),
-    new Card('Eight of Hearts', 'card hearts r08', 8),
-    new Card('Seven of Hearts', 'card hearts r07', 7),
-    new Card('Six of Hearts', 'card hearts r06', 6),
-    new Card('Five of Hearts', 'card hearts r05', 5),
-    new Card('Four of Hearts', 'card hearts r04', 4),
-    new Card('Three of Hearts', 'card hearts r03', 3),
-    new Card('Two of Hearts', 'card hearts r02', 2),
-    new Card('Ace of Spades', 'card spades A', 14),
-    new Card('King of Spades', 'card spades K', 13),
-    new Card('Queen of Spades', 'card spades Q', 12),
-    new Card('Jack of Spades', 'card spades J', 11),
-    new Card('Ten of Spades', 'card spades r10', 10),
-    new Card('Nine of Spades', 'card spades r09', 9),
-    new Card('Eight of Spades', 'card spades r08', 8),
-    new Card('Seven of Spades', 'card spades r07', 7),
-    new Card('Six of Spades', 'card spades r06', 6),
-    new Card('Five of Spades', 'card spades r05', 5),
-    new Card('Four of Spades', 'card spades r04', 4),
-    new Card('Three of Spades', 'card spades r03', 3),
-    new Card('Two of Spades', 'card spades r02', 2),
-    new Card('Ace of Clubs', 'card clubs A', 14),
-    new Card('King of Clubs', 'card clubs K', 13),
-    new Card('Queen of Clubs', 'card clubs Q', 12),
-    new Card('Jack of Clubs', 'card clubs J', 11),
-    new Card('Ten of Clubs', 'card clubs r10', 10),
-    new Card('Nine of Clubs', 'card clubs r09', 9),
-    new Card('Eight of Clubs', 'card clubs r08', 8),
-    new Card('Seven of Clubs', 'card clubs r07', 7),
-    new Card('Six of Clubs', 'card clubs r06', 6),
-    new Card('Five of Clubs', 'card clubs r05', 5),
-    new Card('Four of Clubs', 'card clubs r04', 4),
-    new Card('Three of Clubs', 'card clubs r03', 3),
-    new Card('Two of Clubs', 'card clubs r02', 2),
-    new Card('Red Joker', 'card joker-red', 15),
-    new Card('Black Joker', 'card joker-black', 15),
+    new Card('Ace of Diamonds', 'aceofdiamonds', 14),
+    new Card('King of Diamonds', 'kingofdiamonds', 13),
+    new Card('Queen of Diamonds', 'queenofdiamonds', 12),
+    new Card('Jack of Diamonds', 'jackofdiamonds', 11),
+    new Card('Ten of Diamonds', 'tenofdiamonds', 10),
+    new Card('Nine of Diamonds', 'nineofdiamonds', 9),
+    new Card('Eight of Diamonds', 'eightofdiamonds', 8),
+    new Card('Seven of Diamonds', 'sevenofdiamonds', 7),
+    new Card('Six of Diamonds', 'sixofdiamonds', 6),
+    new Card('Five of Diamonds', 'fiveofdiamonds', 5),
+    new Card('Four of Diamonds', 'fourofdiamonds', 4),
+    new Card('Three of Diamonds', 'threeofdiamonds', 3),
+    new Card('Two of Diamonds', 'twoofdiamonds', 2),
+    new Card('Ace of Hearts', 'aceofhearts', 14),
+    new Card('King of Hearts', 'kingofhearts', 13),
+    new Card('Queen of Hearts', 'queenofhearts', 12),
+    new Card('Jack of Hearts', 'jackofhearts', 11),
+    new Card('Ten of Hearts', 'tenofhearts', 10),
+    new Card('Nine of Hearts', 'nineofhearts', 9),
+    new Card('Eight of Hearts', 'eightofhearts', 8),
+    new Card('Seven of Hearts', 'sevenofhearts', 7),
+    new Card('Six of Hearts', 'sixofhearts', 6),
+    new Card('Five of Hearts', 'fiveofhearts', 5),
+    new Card('Four of Hearts', 'fourofhearts', 4),
+    new Card('Three of Hearts', 'threeofhearts', 3),
+    new Card('Two of Hearts', 'twoofhearts', 2),
+    new Card('Ace of Spades', 'aceofspades', 14),
+    new Card('King of Spades', 'kingofspades', 13),
+    new Card('Queen of Spades', 'queenofspades', 12),
+    new Card('Jack of Spades', 'jackofspades', 11),
+    new Card('Ten of Spades', 'tenofspades', 10),
+    new Card('Nine of Spades', 'nineofspades', 9),
+    new Card('Eight of Spades', 'eightofspades', 8),
+    new Card('Seven of Spades', 'sevenofspades', 7),
+    new Card('Six of Spades', 'sixofspades', 6),
+    new Card('Five of Spades', 'fiveofspades', 5),
+    new Card('Four of Spades', 'fourofspades', 4),
+    new Card('Three of Spades', 'threeofspades', 3),
+    new Card('Two of Spades', 'twoofspades', 2),
+    new Card('Ace of Clubs', 'aceofclubs', 14),
+    new Card('King of Clubs', 'kingofclubs', 13),
+    new Card('Queen of Clubs', 'queenofclubs', 12),
+    new Card('Jack of Clubs', 'jackofclubs', 11),
+    new Card('Ten of Clubs', 'tenofclubs', 10),
+    new Card('Nine of Clubs', 'nineofclubs', 9),
+    new Card('Eight of Clubs', 'eightofclubs', 8),
+    new Card('Seven of Clubs', 'sevenofclubs', 7),
+    new Card('Six of Clubs', 'sixofclubs', 6),
+    new Card('Five of Clubs', 'fiveofclubs', 5),
+    new Card('Four of Clubs', 'fourofclubs', 4),
+    new Card('Three of Clubs', 'threeofclubs', 3),
+    new Card('Two of Clubs', 'twoofclubs', 2),
+    new Card('Red Joker', 'jokerred', 15),
+    new Card('Black Joker', 'jokerblack', 15),
 ];
 
 function shuffle(inputDeck) {
@@ -120,7 +132,7 @@ const p2RevealEl = document.getElementById('player2reveal');
 
 // p2War2El.classList.add('card', 'spades', 'r05');
 
-p2War2El.classList.add('card', p2Deck[0](this.cssname));
+p2War2El.classList.add('card', p2Deck[0].addClass());
  
 // event listeners
 
@@ -317,4 +329,60 @@ function reshuffle() {
     
 // ]
 
+// mDeck = [
+//     new Card('Ace of Diamonds', 'card diamonds A', 14),
+//     new Card('King of Diamonds', 'card diamonds K', 13),
+//     new Card('Queen of Diamonds', 'card diamonds Q', 12),
+//     new Card('Jack of Diamonds', 'card diamonds J', 11),
+//     new Card('Ten of Diamonds', 'card diamonds r10', 10),
+//     new Card('Nine of Diamonds', 'card diamonds r09', 9),
+//     new Card('Eight of Diamonds', 'card diamonds r08', 8),
+//     new Card('Seven of Diamonds', 'card diamonds r07', 7),
+//     new Card('Six of Diamonds', 'card diamonds r06', 6),
+//     new Card('Five of Diamonds', 'card diamonds r05', 5),
+//     new Card('Four of Diamonds', 'card diamonds r04', 4),
+//     new Card('Three of Diamonds', 'card diamonds r03', 3),
+//     new Card('Two of Diamonds', 'card diamonds r02', 2),
+//     new Card('Ace of Hearts', 'card hearts A', 14),
+//     new Card('King of Hearts', 'card hearts K', 13),
+//     new Card('Queen of Hearts', 'card hearts Q', 12),
+//     new Card('Jack of Hearts', 'card hearts J', 11),
+//     new Card('Ten of Hearts', 'card hearts r10', 10),
+//     new Card('Nine of Hearts', 'card hearts r09', 9),
+//     new Card('Eight of Hearts', 'card hearts r08', 8),
+//     new Card('Seven of Hearts', 'card hearts r07', 7),
+//     new Card('Six of Hearts', 'card hearts r06', 6),
+//     new Card('Five of Hearts', 'card hearts r05', 5),
+//     new Card('Four of Hearts', 'card hearts r04', 4),
+//     new Card('Three of Hearts', 'card hearts r03', 3),
+//     new Card('Two of Hearts', 'card hearts r02', 2),
+//     new Card('Ace of Spades', 'card spades A', 14),
+//     new Card('King of Spades', 'card spades K', 13),
+//     new Card('Queen of Spades', 'card spades Q', 12),
+//     new Card('Jack of Spades', 'card spades J', 11),
+//     new Card('Ten of Spades', 'card spades r10', 10),
+//     new Card('Nine of Spades', 'card spades r09', 9),
+//     new Card('Eight of Spades', 'card spades r08', 8),
+//     new Card('Seven of Spades', 'card spades r07', 7),
+//     new Card('Six of Spades', 'card spades r06', 6),
+//     new Card('Five of Spades', 'card spades r05', 5),
+//     new Card('Four of Spades', 'card spades r04', 4),
+//     new Card('Three of Spades', 'card spades r03', 3),
+//     new Card('Two of Spades', 'card spades r02', 2),
+//     new Card('Ace of Clubs', 'card clubs A', 14),
+//     new Card('King of Clubs', 'card clubs K', 13),
+//     new Card('Queen of Clubs', 'card clubs Q', 12),
+//     new Card('Jack of Clubs', 'card clubs J', 11),
+//     new Card('Ten of Clubs', 'card clubs r10', 10),
+//     new Card('Nine of Clubs', 'card clubs r09', 9),
+//     new Card('Eight of Clubs', 'card clubs r08', 8),
+//     new Card('Seven of Clubs', 'card clubs r07', 7),
+//     new Card('Six of Clubs', 'card clubs r06', 6),
+//     new Card('Five of Clubs', 'card clubs r05', 5),
+//     new Card('Four of Clubs', 'card clubs r04', 4),
+//     new Card('Three of Clubs', 'card clubs r03', 3),
+//     new Card('Two of Clubs', 'card clubs r02', 2),
+//     new Card('Red Joker', 'card joker-red', 15),
+//     new Card('Black Joker', 'card joker-black', 15),
+// ];
 
