@@ -15,8 +15,8 @@ section {
     display: grid;
     width: 100vh;
     height: 100vh;
-    grid-template-columns: repeat(8, 10%);
-    grid-template-rows: repeat(8, 7%);
+    grid-template-columns: repeat(8, 7%);
+    grid-template-rows: repeat(8, 10%);
     /* justify-content: center; */
     /* grid-template-columns: repeat(6, 16.66%);
     grid-template-rows: repeat(8 , 12.5%); */

@@ -137,6 +137,18 @@ function removeClasses () {
     this.className = '';
 };
 
+function warReveal () {
+    p1War1El.classList.add('card', p1Deck)
+}
+
+function warDecision () {
+    let decisionCard1 = p1Deck[4].cardFace();
+    let decisionCard2 = p2Deck[4].cardFace();
+    if (decisionCard1.getValue() > decisionCard2.getValue()) {
+            
+    }
+}
+
 function shuffleReveal() {
     if (p1Deck.length === 0) {
         p1Deck = shuffle(p1Discard);
@@ -154,8 +166,8 @@ function shuffleReveal() {
         alert ('Player 2 wins!');
     };
 
-    p1War2El.classList.add('card', p1Deck[0].cardFace());
-    p2War2El.classList.add('card', p2Deck[0].cardFace());
+    p1RevealEl.classList.add('card', p1Deck[0].cardFace());
+    p2RevealEl.classList.add('card', p2Deck[0].cardFace());
 };
 
 function play() {
@@ -168,25 +180,68 @@ function play() {
     if (transferCard1.getValue() > transferCard2.getValue()) {
         p1Discard.unshift(transferCard1);
         p1Discard.unshift(transferCard2);
+        p1DiscardEl.classList.remove('card', p1Discard[0].cardFace());
+        // p1DiscardEl.removeClasses();
         p1DiscardEl.classList.add('card', transferCard2.cardFace());
 
 
 //modify to allow for tie condition in war
 
-   } else {
+   } else if (transferCard2.getValue > transferCard1.getValue()) {
     p2Discard.unshift(transferCard2);
     p2Discard.unshift(transferCard1);
+    p2DiscardEl.classList.remove('card', p2Discard[0].cardFace());
+    // p2DiscardEl.removeClasses();
     p2DiscardEl.classList.add('card', transferCard1.cardFace());
+   } else {
+        return warReveal;
+        return warDecision;
    }
 
-   p1War2El.classList.remove('card', transferCard1.cardFace());
-   p2War2El.classList.remove('card', transferCard2.cardFace());
-/
+   p1RevealEl.classList.remove('card', transferCard1.cardFace());
+   p2RevealEl.classList.remove('card', transferCard2.cardFace());
+
     console.log(p1Discard);
     console.log(p2Discard);
     console.log(p1Deck);
     console.log(p2Deck);
 };
+
+//// experimental
+
+function play() {
+    // p1DiscardEl.removeClasses();
+    // p2DiscardEl.removeClasses();
+//     let transferCard1 = p1Deck.shift();
+//     let transferCard2 = p2Deck.shift();
+//     console.log(transferCard1);
+//     console.log(transferCard2);
+    if (p1Deck[0].getValue() > p2Deck[0].getValue()) {
+        let transferCard1 = p1Deck.shift();
+        let transferCard2 = p2Deck.shift();
+        p1Discard.unshift(transferCard1);
+        p1Discard.unshift(transferCard2);
+        p1DiscardEl.classList.remove('card', p1Discard[0].cardFace());
+        p1DiscardEl.classList.add('card', transferCard2.cardFace());
+        p1War2El.classList.remove('card', transferCard1.cardFace());
+        p2War2El.classList.remove('card', transferCard2.cardFace());
+
+   } else if (p1Deck[0].getValue() > p2Deck[0].getValue()) {
+    let transferCard1 = p1Deck.shift();
+    let transferCard2 = p2Deck.shift();
+    p2Discard.unshift(transferCard2);
+    p2Discard.unshift(transferCard1);
+    p2DiscardEl.classList.remove('card', p2Discard[0].cardFace());
+    p2DiscardEl.classList.add('card', transferCard1.cardFace());
+    p1War2El.classList.remove('card', transferCard1.cardFace());
+    p2War2El.classList.remove('card', transferCard2.cardFace());
+    
+   } else {
+       return alert('WAR is declared! Click the card already on play in the field to reveal the stakes and the deciding card. Then click the revealed deciding card to seize the spoils… or suffer ignominious DEFEAT ');
+       
+   }
+
+
 
 // function takeTurn() {
 //     play();
