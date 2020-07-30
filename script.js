@@ -11,19 +11,16 @@ class Card {
     };
     getValue () {
         return this.value;
-    }
+    };
 };
-
-// const aceOfDiamonds= [
-//     name: 'Aceof Diamonds',
-//     cssName: 'aceofdiamonds',
-//     value: 14;
-// ]
 
 // app's state
 
-let mDeck, p1Deck, p1Discard, p2Deck, p2Discard;
+let mDeck, p1Deck, p2Deck;
 
+let p1Discard = [];
+
+let p2Discard = [];
 
 mDeck = [
     new Card('Ace of Diamonds', 'aceofdiamonds', 14),
@@ -127,51 +124,51 @@ const p2War1El = document.getElementById('player2war2');
 const p2War2El = document.getElementById('player2war2');
 const p2War3El = document.getElementById('player2war3');
 const p2RevealEl = document.getElementById('player2reveal');
-
-// p2War2El.classList.add('card', 'sixofclubs');
-
-// p2War2El.classList.add('card', 'spades', 'r05');
-
-p2War2El.classList.add('card', p2Deck[0].addClass());
  
 // event listeners
 
+p1DeckEl.addEventListener('click', shuffleReveal);
 
+p1DiscardEl.addEventListener('click', play);
 
-function reveal() {
-
+function shuffleReveal() {
+    p1War2El.classList.add('card', p1Deck[0].addClass());
+    p2War2El.classList.add('card', p2Deck[0].addClass());
 }
 
 function play() {
-    if (p1Deck[0].value > p2Deck[0].value) {
-        let transferCard = p1Deck.shift();
-        let transferCard2 = p2Deck.shift();
-        p1Discard.push(transferCard);
-        p1Discard.push(transferCard2);
+    let transferCard1 = p1Deck.shift();
+    let transferCard2 = p2Deck.shift();
+    console.log(transferCard1);
+    console.log(transferCard2);
+    if (transferCard1.getValue() > transferCard2.getValue()) {
+        p1Discard.unshift(transferCard1);
+        p1Discard.unshift(transferCard2);
+
 
 //modify to allow for tie condition in war
 
    } else {
-    let transferCard = p1Deck.shift();
-    let transferCard2 = p2Deck.shift();
-    p2Discard.push(transferCard);
-    p2Discard.push(transferCard2);
+    p2Discard.unshift(transferCard2);
+    p2Discard.unshift(transferCard1);
    }
 
+    console.log(p1Discard);
+    console.log(p2Discard);
 };
 
-function takeTurn() {
-    play();
-    if (p1Deck === 0) {
-        p1discard
-    }
-}
+// function takeTurn() {
+//     play();
+//     if (p1Deck === 0) {
+//         p1discard
+//     }
+// }
 
-function reshuffle() {
-    if (p1Deck == 0) {
+// function reshuffle() {
+//     if (p1Deck == 0) {
 
-    }
-}
+//     }
+// }
 
 // masterDeck[30].cardname;
 // console.log(masterDeck.filter(x => x.cardname === 'Ace of Diamonds').length);
