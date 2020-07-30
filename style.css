@@ -1,6 +1,6 @@
 body {
     /* max-width: 100vh; */
-    position: absolute;
+    position: fixed;
     width: 100%;
     min-height: 100vh;
     height: 100vh;

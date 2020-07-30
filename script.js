@@ -6,7 +6,7 @@ class Card {
         this.cssname = cssname;
         this.value = value;
     };
-    addClass () {
+    cardFace () {
         return this.cssname;
     };
     getValue () {
@@ -131,10 +131,12 @@ p1DeckEl.addEventListener('click', shuffleReveal);
 
 p1DiscardEl.addEventListener('click', play);
 
+//functions
+
 function shuffleReveal() {
-    p1War2El.classList.add('card', p1Deck[0].addClass());
-    p2War2El.classList.add('card', p2Deck[0].addClass());
-}
+    p1War2El.classList.add('card', p1Deck[0].cardFace());
+    p2War2El.classList.add('card', p2Deck[0].cardFace());
+};
 
 function play() {
     let transferCard1 = p1Deck.shift();
@@ -144,6 +146,7 @@ function play() {
     if (transferCard1.getValue() > transferCard2.getValue()) {
         p1Discard.unshift(transferCard1);
         p1Discard.unshift(transferCard2);
+        p1DiscardEl.classList.add(transferCard2.cardFace());
 
 
 //modify to allow for tie condition in war
@@ -151,10 +154,16 @@ function play() {
    } else {
     p2Discard.unshift(transferCard2);
     p2Discard.unshift(transferCard1);
+    p2DiscardEl.classList.add(transferCard2.cardFace());
    }
+
+   p1War2El.classList.remove('card', transferCard1.cardFace());
+   p2War2El.classList.remove('card', transferCard2.cardFace());
 
     console.log(p1Discard);
     console.log(p2Discard);
+    console.log(p1Deck);
+    console.log(p2Deck);
 };
 
 // function takeTurn() {
