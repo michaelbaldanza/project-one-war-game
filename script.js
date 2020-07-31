@@ -14,7 +14,7 @@ class Card {
     };
 };
 
-// app's state
+// app's state/setup
 
 let mDeck, p1Deck, p2Deck;
 
@@ -86,17 +86,9 @@ function shuffle(inputDeck) {
         let randomCard  = inputDeck[randomIndex];
         inputDeck.splice(randomIndex, 1);
         outputDeck.push(randomCard);
-        // console.log(randomCard);
-        // console.log(randomIndex);
     };
-
-
-
-    // for (i=0; i<inputDeck.length; i++) {
-
-    // }
     return outputDeck;
-}
+};
 
 mDeck = shuffle(mDeck);
 console.dir(mDeck);
@@ -120,36 +112,30 @@ const p1RevealEl = document.getElementById('player1reveal');
 const p2DeckEl = document.getElementById('player2deck');
 const p2DiscardEl = document.getElementById('player2discard');
 const p2DecisionEl = document.getElementById('player2decision');
-const p2War1El = document.getElementById('player2war2');
+const p2War1El = document.getElementById('player2war1');
 const p2War2El = document.getElementById('player2war2');
 const p2War3El = document.getElementById('player2war3');
 const p2RevealEl = document.getElementById('player2reveal');
  
 // event listeners
 
-p1DeckEl.addEventListener('click', shuffleReveal);
+p1DeckEl.addEventListener('click', winShuffleReveal);
 
 p1DiscardEl.addEventListener('click', play);
 
 //functions
 
-function removeClasses () {
-    this.className = '';
-};
+function winShuffleReveal() {
 
-function warReveal () {
-    p1War1El.classList.add('card', p1Deck)
-}
+    if (p1Deck.length === 54) {
 
-function warDecision () {
-    let decisionCard1 = p1Deck[4].cardFace();
-    let decisionCard2 = p2Deck[4].cardFace();
-    if (decisionCard1.getValue() > decisionCard2.getValue()) {
-            
-    }
-}
+        return alert('Player 1 wins!');
+    };
 
-function shuffleReveal() {
+    if (p2Deck.length === 54) {
+        return alert ('Player 2 wins!');
+    };
+
     if (p1Deck.length === 0) {
         p1Deck = shuffle(p1Discard);
     };
@@ -158,45 +144,47 @@ function shuffleReveal() {
         p2Deck = shuffle(p2Discard);
     };
 
-    if (p1Deck.length === 54) {
-        alert('Player 1 wins!');
-    };
-
-    if (p2Deck.length === 54) {
-        alert ('Player 2 wins!');
-    };
-
     p1RevealEl.classList.add('card', p1Deck[0].cardFace());
     p2RevealEl.classList.add('card', p2Deck[0].cardFace());
+
+    if (p1Deck[0].getValue === p2Deck[0].getValue()) {
+        alert('WAR is declared! Click the card to MEET YOUR FATE');
+        return warReveal();
+
+    }
 };
 
 function play() {
-    // p1DiscardEl.removeClasses();
-    // p2DiscardEl.removeClasses();
-    let transferCard1 = p1Deck.shift();
-    let transferCard2 = p2Deck.shift();
-    console.log(transferCard1);
-    console.log(transferCard2);
-    if (transferCard1.getValue() > transferCard2.getValue()) {
-        p1Discard.unshift(transferCard1);
-        p1Discard.unshift(transferCard2);
-        p1DiscardEl.classList.remove('card', p1Discard[0].cardFace());
-        // p1DiscardEl.removeClasses();
-        p1DiscardEl.classList.add('card', transferCard2.cardFace());
+    if (p1Deck[0].getValue() === p2Deck[0].getValue) {
+        return warReveal();
+    }
+    else {
+        
+        let transferCard1 = p1Deck.shift();
+        let transferCard2 = p2Deck.shift();
+        console.log(transferCard1);
+        console.log(transferCard2);
 
+        if (transferCard1.getValue() > transferCard2.getValue()) {
+            p1Discard.unshift(transferCard1);
+            p1Discard.unshift(transferCard2);
 
-//modify to allow for tie condition in war
+            if (p1Discard.length > 2) {
+                p1DiscardEl.classList.remove(p1Discard[2].cardFace());
+            };
+            
+            p1DiscardEl.classList.add(transferCard2.cardFace());
 
-   } else if (transferCard2.getValue > transferCard1.getValue()) {
-    p2Discard.unshift(transferCard2);
-    p2Discard.unshift(transferCard1);
-    p2DiscardEl.classList.remove('card', p2Discard[0].cardFace());
-    // p2DiscardEl.removeClasses();
-    p2DiscardEl.classList.add('card', transferCard1.cardFace());
-   } else {
-        return warReveal;
-        return warDecision;
-   }
+        } else {
+            p2Discard.unshift(transferCard2);
+            p2Discard.unshift(transferCard1);
+
+            if (p2Discard.length > 2) {
+                p2DiscardEl.classList.remove(p2Discard[2].cardFace());
+            }
+            
+            p2DiscardEl.classList.add(transferCard1.cardFace());
+    };
 
    p1RevealEl.classList.remove('card', transferCard1.cardFace());
    p2RevealEl.classList.remove('card', transferCard2.cardFace());
@@ -207,57 +195,44 @@ function play() {
     console.log(p2Deck);
 };
 
-//// experimental
-
-function play() {
-    // p1DiscardEl.removeClasses();
-    // p2DiscardEl.removeClasses();
-//     let transferCard1 = p1Deck.shift();
-//     let transferCard2 = p2Deck.shift();
-//     console.log(transferCard1);
-//     console.log(transferCard2);
-    if (p1Deck[0].getValue() > p2Deck[0].getValue()) {
-        let transferCard1 = p1Deck.shift();
-        let transferCard2 = p2Deck.shift();
-        p1Discard.unshift(transferCard1);
-        p1Discard.unshift(transferCard2);
-        p1DiscardEl.classList.remove('card', p1Discard[0].cardFace());
-        p1DiscardEl.classList.add('card', transferCard2.cardFace());
-        p1War2El.classList.remove('card', transferCard1.cardFace());
-        p2War2El.classList.remove('card', transferCard2.cardFace());
-
-   } else if (p1Deck[0].getValue() > p2Deck[0].getValue()) {
-    let transferCard1 = p1Deck.shift();
-    let transferCard2 = p2Deck.shift();
-    p2Discard.unshift(transferCard2);
-    p2Discard.unshift(transferCard1);
-    p2DiscardEl.classList.remove('card', p2Discard[0].cardFace());
-    p2DiscardEl.classList.add('card', transferCard1.cardFace());
-    p1War2El.classList.remove('card', transferCard1.cardFace());
-    p2War2El.classList.remove('card', transferCard2.cardFace());
+function warReveal() {
+    p1War1El.classList.add('card', p1Deck[1].cardFace());
+    p1War2El.classList.add('card', p1Deck[2].cardFace());
+    p1War3El.classList.add('card', p1Deck[3].cardFace());
+    p1DecisionEl.classList.add('card', p1Deck[4].cardFace());
+    p2War1El.classList.add('card', p2Deck[1].cardFace());
+    p2War2El.classList.add('card', p2Deck[2].cardFace());
+    p2War3El.classList.add('card', p2Deck[3].cardFace());
+    p2DecisionEl.classList.add('card', p2Deck[4].cardFace());
     
-   } else {
-       return alert('WAR is declared! Click the card already on play in the field to reveal the stakes and the deciding card. Then click the revealed deciding card to seize the spoils… or suffer ignominious DEFEAT ');
-       
-   }
+    p1DecisionEl.addEventListener('click', warDecision);
+    return alert('Click the card to the upper right of your deck to resolve the war condition...');
+}
 
-
-
-// function takeTurn() {
-//     play();
-//     if (p1Deck === 0) {
-//         p1discard
-//     }
-// }
-
-// function reshuffle() {
-//     if (p1Deck == 0) {
-
-//     }
-// }
-
-// masterDeck[30].cardname;
-// console.log(masterDeck.filter(x => x.cardname === 'Ace of Diamonds').length);
-// forEach(console.log(x.cardname));
-//check randomizer by filtering deck - iterate ind values ot get names, 
-//then filter values to check - length greater than one, randomizer mech is broken
+function warDecision () {
+    p1War1El.classList.remove('card', p1Deck[1].cardFace());
+    p1War2El.classList.remove('card', p1Deck[2].cardFace());
+    p1War3El.classList.remove('card', p1Deck[3].cardFace());
+    p1DecisionEl.classList.remove('card', p1Deck[4].cardFace());
+    p2War1El.classList.remove('card', p2Deck[1].cardFace());
+    p2War2El.classList.remove('card', p2Deck[2].cardFace());
+    p2War3El.classList.remove('card', p2Deck[3].cardFace());
+    p2DecisionEl.classList.remove('card', p2Deck[4].cardFace());
+    let capture1 = p1Deck[0].shift();
+    let capture2 = p1Deck[1].shift();
+    let capture3 = p1Deck[2].shift();
+    let capture4 = p1Deck[3].shift();
+    let capture5 = p1Deck[4].shift();
+    let capture6 = p2Deck[0].shift();
+    let capture7 = p2Deck[1].shift();
+    let capture8 = p2Deck[2].shift();
+    let capture9 = p2Deck[3].shift();
+    let capture10 = p2Deck[4].shift();   
+    if (capture5.getValue() > capture10.getValue()) {
+        p1Discard.unshift(capture1, capture2, capture3, capture4, capture5,
+            capture6, capture7, capture8, capture9, capture10);
+    } else {
+        p2Discard.unshift(capture1, capture2, capture3, capture4, capture5,
+            capture6, capture7, capture8, capture9, capture10);
+    };
+}};
