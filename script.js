@@ -225,6 +225,9 @@ function warDecision () {
     console.log(transferCard1);
     console.log(transferCard2);
 
+    p1RevealEl.classList.remove('card', transferCard1.cardFace());
+    p2RevealEl.classList.remove('card', transferCard2.cardFace());
+
     let capture1 = p1Deck.shift();
     console.log(capture1);
     let capture2 = p1Deck.shift();
