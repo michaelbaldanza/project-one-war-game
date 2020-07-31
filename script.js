@@ -250,9 +250,15 @@ function warDecision () {
     console.log(capture9);   
     if (capture5.getValue() > capture10.getValue()) {
         p1Discard.unshift(capture1, capture2, capture3, capture4, capture5,
-            capture6, capture7, capture8, capture9, capture10, transfer);
+            capture6, capture7, capture8, capture9, capture10, transferCard1, transferCard2);
+
+        p1DiscardEl.classList.add(capture10.cardFace());
+
     } else {
         p2Discard.unshift(capture1, capture2, capture3, capture4, capture5,
-            capture6, capture7, capture8, capture9, capture10);
+            capture6, capture7, capture8, capture9, capture10, transferCard1, transferCard2);
+        
+        p2DiscardEl.classList.add(capture5.cardFace());
+        
     };
 }};
