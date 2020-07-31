@@ -13,6 +13,7 @@ CSS
 JavaScript
 
 #Getting Started
+http://michaelsbaldanza.github.io/project-one-war
 
 #Next Steps
 Create winning conditions for ties to at least the fifth order.
