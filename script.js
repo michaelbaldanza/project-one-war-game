@@ -241,7 +241,7 @@ function warDecision () {
     let capture6 = p2Deck[0].shift();
     console.log(capture6);
     let capture7 = p2Deck.shift();
-    console.log(capture7)
+    console.log(capture7);
     let capture8 = p2Deck.shift();
     console.log(capture7);
     let capture9 = p2Deck.shift();
@@ -259,6 +259,6 @@ function warDecision () {
             capture6, capture7, capture8, capture9, capture10, transferCard1, transferCard2);
         
         p2DiscardEl.classList.add(capture5.cardFace());
-        
+
     };
 }};
