@@ -147,15 +147,15 @@ function winShuffleReveal() {
     p1RevealEl.classList.add('card', p1Deck[0].cardFace());
     p2RevealEl.classList.add('card', p2Deck[0].cardFace());
 
-    if (p1Deck[0].getValue === p2Deck[0].getValue()) {
-        alert('WAR is declared! Click the card to MEET YOUR FATE');
-        return warReveal();
+    // if (p1Deck[0].getValue === p2Deck[0].getValue()) {
+    //     return alert('WAR is declared! Click the card to MEET YOUR FATE');
+    //     return warReveal();
 
-    }
+    // }
 };
 
 function play() {
-    if (p1Deck[0].getValue() === p2Deck[0].getValue) {
+    if (p1Deck[0].getValue() === p2Deck[0].getValue()) {
         return warReveal();
     }
     else {
@@ -210,6 +210,7 @@ function warReveal() {
 }
 
 function warDecision () {
+
     p1War1El.classList.remove('card', p1Deck[1].cardFace());
     p1War2El.classList.remove('card', p1Deck[2].cardFace());
     p1War3El.classList.remove('card', p1Deck[3].cardFace());
@@ -218,19 +219,35 @@ function warDecision () {
     p2War2El.classList.remove('card', p2Deck[2].cardFace());
     p2War3El.classList.remove('card', p2Deck[3].cardFace());
     p2DecisionEl.classList.remove('card', p2Deck[4].cardFace());
-    let capture1 = p1Deck[0].shift();
-    let capture2 = p1Deck[1].shift();
-    let capture3 = p1Deck[2].shift();
-    let capture4 = p1Deck[3].shift();
-    let capture5 = p1Deck[4].shift();
+
+    let transferCard1 = p1Deck.shift();
+    let transferCard2 = p2Deck.shift();
+    console.log(transferCard1);
+    console.log(transferCard2);
+
+    let capture1 = p1Deck.shift();
+    console.log(capture1);
+    let capture2 = p1Deck.shift();
+    console.log(capture2);
+    let capture3 = p1Deck.shift();
+    console.log(capture3);
+    let capture4 = p1Deck.shift();
+    console.log(capture4);
+    let capture5 = p1Deck.shift();
+    console.log(capture5);
     let capture6 = p2Deck[0].shift();
-    let capture7 = p2Deck[1].shift();
-    let capture8 = p2Deck[2].shift();
-    let capture9 = p2Deck[3].shift();
-    let capture10 = p2Deck[4].shift();   
+    console.log(capture6);
+    let capture7 = p2Deck.shift();
+    console.log(capture7)
+    let capture8 = p2Deck.shift();
+    console.log(capture7);
+    let capture9 = p2Deck.shift();
+    console.log(capture8);
+    let capture10 = p2Deck.shift();
+    console.log(capture9);   
     if (capture5.getValue() > capture10.getValue()) {
         p1Discard.unshift(capture1, capture2, capture3, capture4, capture5,
-            capture6, capture7, capture8, capture9, capture10);
+            capture6, capture7, capture8, capture9, capture10, transfer);
     } else {
         p2Discard.unshift(capture1, capture2, capture3, capture4, capture5,
             capture6, capture7, capture8, capture9, capture10);
