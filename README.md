@@ -1,20 +1,45 @@
-#War
+# War
 
-A fifty-four card deck is shuffled and split in two. Each player places a card on the field of play. The player with the higher value card wins the "battle", and takes both cards into his discard pile.
+## Object of the Game
 
-In the event of a tie, each player will stake three further cards, then decides who wins the entire pot (ten cards total!), by a fourth. In this game, any further ties will be decided in the second player's favour. Sorry player one!
+You are leading a ragtag group of rebels in a courageous uprising against the uh forces of evil...
 
-#Screenshot
+You will send your troops into battle one by one. The morale boost from a victory will swell your forces with enemy defectors.  If you lose, don't worry——you'll have a chance to recover.
+
+If your troops meet their match, you will have to send in reinforcements. Careful, though — your enemy has the advantage in this situation, and you could lose far more than you bargained for. If you would win, you will need Fortune, that fickle goddess, on your side...
+
+## Gameplay
+
+### Taking a Turn
+
+The top card of each player's deck is revealed by clicking on the deck near the the bottom of the window.
+
+The cards are sent to the winning player's discard pile by clicking on the discard pile to the left of the deck. (Both discard piles appear as white spaces until its player has a victory. Then it appears as the most recently won card.)
+
+
+### War
+
+In the event of a tie, click the card the was played by clicking on the deck to reveal the cards that will be involved in the war chain. Then click on the card to the upper-right of the deck to send all the cards to the winner of the war.
+
+### Victory
+
+Victory will be declared for the first player to have all fifty-four cards in their deck.
+
+# Screenshot
+
 ![](war-screenshot.jpg);
 
-#Technologies Used
+# Technologies Used
+
 HTML
 CSS
 JavaScript
 
-#Getting Started
+# Getting Started
+
 http://michaelsbaldanza.github.io/project-one-war
 
-#Next Steps
+# Next Steps
+
 Create winning conditions for ties to at least the fifth order.
 Improve styling. Add card counter, card animation, adjust board position on-screen, add more interesting background, move-by-move narration, eye-catching header.
