@@ -36,7 +36,7 @@ JavaScript
 
 ## Getting Started
 
-http://michaelsbaldanza.github.io/project-one-war-game
+http://michaelsbaldanza.github.io/project-one-war-game/
 
 
 ## Next Steps
