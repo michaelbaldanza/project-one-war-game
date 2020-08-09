@@ -6,11 +6,7 @@
 
 ## Object of the Game
 
-You are leading a ragtag group of rebels in a courageous uprising against the uh forces of evil...
-
-You will send your troops into battle one by one. The morale boost from a victory will swell your forces with enemy defectors.  If you lose, don't worry——you'll have a chance to recover.
-
-If your troops meet their match, you will have to send in reinforcements. Careful, though — your enemy has the advantage in this situation, and you could lose far more than you bargained for. If you would win, you will need Fortune, that fickle goddess, on your side...
+Take all of your opponent's cards.
 
 ## Gameplay
 
