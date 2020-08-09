@@ -14,13 +14,7 @@ class Card {
     };
 };
 
-// app's state/setup
-
 let mDeck, p1Deck, p2Deck;
-
-let p1Discard = [];
-
-let p2Discard = [];
 
 mDeck = [
     new Card('Ace of Diamonds', 'aceofdiamonds', 14),
@@ -79,16 +73,8 @@ mDeck = [
     new Card('Black Joker', 'jokerblack', 15),
 ];
 
-function shuffle(inputDeck) {
-    let outputDeck = [];
-    while (inputDeck.length>0) {
-        let randomIndex = Math.floor(Math.random() * inputDeck.length);
-        let randomCard  = inputDeck[randomIndex];
-        inputDeck.splice(randomIndex, 1);
-        outputDeck.push(randomCard);
-    };
-    return outputDeck;
-};
+let p1Discard = [];
+let p2Discard = [];
 
 mDeck = shuffle(mDeck);
 console.dir(mDeck);
@@ -125,14 +111,32 @@ p1DiscardEl.addEventListener('click', play);
 
 //functions
 
+function shuffle(inputDeck) {
+    let outputDeck = [];
+    while (inputDeck.length > 0) {
+        let randomIndex = Math.floor(Math.random() * inputDeck.length);
+        let randomCard  = inputDeck[randomIndex];
+        inputDeck.splice(randomIndex, 1);
+        outputDeck.push(randomCard);
+    };
+    return outputDeck;
+};
+
 function winShuffleReveal() {
 
-    if (p1Deck.length === 54) {
+    let p1Count = p1Discard.length + p1Deck.length;
+    let p2Count = p1Discard.length + p2Deck.length;
+    console.log(p1Discard.length);
+    console.log(p2Discard.length);
+    console.log(p1Count);
+    console.log(p2Count);
+
+    if (p1Count.length === 54) {
 
         return alert('Player 1 wins!');
     };
 
-    if (p2Deck.length === 54) {
+    if (p2Count.length === 54) {
         return alert ('Player 2 wins!');
     };
 
@@ -190,8 +194,9 @@ function play() {
         p2RevealEl.classList.remove('card', transferCard2.cardFace());
 
         console.log(p1Discard);
-        console.log(p2Discard);
         console.log(p1Deck);
+
+        console.log(p2Discard);
         console.log(p2Deck);
     };
 };
@@ -238,11 +243,12 @@ function warDecision () {
     let capture7 = p2Deck.shift();
     console.log(capture7)
     let capture8 = p2Deck.shift();
-    console.log(capture7);
-    let capture9 = p2Deck.shift();
     console.log(capture8);
+    let capture9 = p2Deck.shift();
+    console.log(capture9);
     let capture10 = p2Deck.shift();
-    console.log(capture9);   
+    console.log(10);
+
     if (capture5.getValue() > capture10.getValue()) {
 
         p1Discard.unshift(capture10, capture9, capture8, capture7, transferCard2,
