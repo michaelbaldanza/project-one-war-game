@@ -8,17 +8,21 @@ Take all of your opponent's cards.
 
 ### Taking a Turn
 
-Click on the deck near the bottom of your screen to reveal each player's top card.
+1. Click on the deck near the bottom of your screen (henceforth "player one's deck") to reveal each player's top card.
 
-The player with the higher card wins! Click on the discard pile (the square to the left of the deck that was clicked to reveal the cards) to award the two cards to the winner of the battle.
+1. The player with the higher card wins! Click on player one's discard pile (to the left of player one's deck) to award the two cards to the winner of the battle.
+
+1. Repeat steps one and two until the victory condition is met. Note: repetition of steps one and two will be interrupted if the two revealed cards tie. In this case, a war is declared!
 
 ### War
 
-In the event of a tie, click the card the was played by clicking on the deck to reveal the cards that will be involved in the war chain. Then click on the card to the upper-right of the deck to send all the cards to the winner of the war.
+In the event of a tie, the players enter into war. Each player will reveal four more cards. The last card each player reveals (henceforth "decision card") decides who wins the "war". The player with the higher decision card takes **all** the cards that have been revealed.
+
+Click on player one's decision card (to the upper right of player one's deck) to resolve the war.
 
 ### Victory
 
-Victory will be declared for the first player to have all fifty-four cards in their deck.
+The first player to have all fifty-four cards wins!
 
 ## Screenshot
 
