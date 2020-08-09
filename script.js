@@ -102,7 +102,9 @@ const p2War1El = document.getElementById('player2war1');
 const p2War2El = document.getElementById('player2war2');
 const p2War3El = document.getElementById('player2war3');
 const p2RevealEl = document.getElementById('player2reveal');
- 
+
+const vicDec = document.getElementById('victorydeclaration');
+
 // event listeners
 
 p1DeckEl.addEventListener('click', winShuffleReveal);
@@ -124,18 +126,17 @@ function shuffle(inputDeck) {
 
 function winShuffleReveal() {
 
-    let p1Count = p1Discard.length + p2Deck.length;
+    let p1Count = p1Discard.length + p1Deck.length;
     let p2Count = p2Discard.length + p2Deck.length;
     console.log(p1Count);
     console.log(p2Count);
 
     if (p1Count.length === 54) {
-
-        return alert('Player 1 wins!');
+        return vicDec.textContent = 'Player 1 wins!';
     };
 
     if (p2Count.length === 54) {
-        return alert ('Player 2 wins!');
+        return vicDec.textContent = 'Player 2 wins!';
     };
 
     if (p1Deck.length === 0) {
@@ -224,6 +225,16 @@ function warDecision () {
     p2War3El.classList.remove('card', p2Deck[3].cardFace());
     p2DecisionEl.classList.remove('card', p2Deck[4].cardFace());
 
+
+    // if (p1Deck.length === 0) {
+    //     p1Deck = shuffle(p1Discard);
+    // };
+
+    // if (p2Deck.length === 0) {
+    //     p2Deck = shuffle(p2Discard);
+    // };
+    // if ()
+
     let transferCard1 = p1Deck.shift();
     let transferCard2 = p2Deck.shift();
     console.log(transferCard1);
@@ -245,7 +256,7 @@ function warDecision () {
     let capture9 = p2Deck.shift();
     console.log(capture9);
     let capture10 = p2Deck.shift();
-    console.log(10);
+    console.log(capture10);
 
     if (capture5.getValue() > capture10.getValue()) {
 
