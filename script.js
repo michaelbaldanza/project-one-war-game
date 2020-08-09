@@ -124,10 +124,8 @@ function shuffle(inputDeck) {
 
 function winShuffleReveal() {
 
-    let p1Count = p1Discard.length + p1Deck.length;
-    let p2Count = p1Discard.length + p2Deck.length;
-    console.log(p1Discard.length);
-    console.log(p2Discard.length);
+    let p1Count = p1Discard.length + p2Deck.length;
+    let p2Count = p2Discard.length + p2Deck.length;
     console.log(p1Count);
     console.log(p2Count);
 
