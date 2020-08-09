@@ -240,6 +240,11 @@ function warDecision () {
     console.log(transferCard1);
     console.log(transferCard2);
 
+    p1RevealEl.classList.remove('card', transferCard1.cardFace());
+    p2RevealEl.classList.remove('card', transferCard2.cardFace());
+
+    let capture1 = p1Deck.shift();
+    console.log(capture1);
     let capture2 = p1Deck.shift();
     console.log(capture2);
     let capture3 = p1Deck.shift();
@@ -250,7 +255,7 @@ function warDecision () {
     console.log(capture5);
 
     let capture7 = p2Deck.shift();
-    console.log(capture7)
+    console.log(capture7);
     let capture8 = p2Deck.shift();
     console.log(capture8);
     let capture9 = p2Deck.shift();
@@ -259,26 +264,17 @@ function warDecision () {
     console.log(capture10);
 
     if (capture5.getValue() > capture10.getValue()) {
-
-        p1Discard.unshift(capture10, capture9, capture8, capture7, transferCard2,
-            capture5, capture4, capture3, capture2, transferCard1);
-        
-        if (p1Discard.length > 2) {
-            p1DiscardEl.classList.remove(p1Discard[10].cardFace());
-        };
+        p1Discard.unshift(capture1, capture2, capture3, capture4, capture5,
+            capture6, capture7, capture8, capture9, capture10, transferCard1, transferCard2);
 
         p1DiscardEl.classList.add(capture10.cardFace());
-        
+
     } else {
-
-        p2Discard.unshift(capture5, capture4, capture3, capture2, transferCard1,
-            capture10, capture9, capture8, capture7, transferCard2);
-    
-        if (p2Discard.length > 2) {
-            p2DiscardEl.classList.remove(p2Discard[10].cardFace());
-        };
-
+        p2Discard.unshift(capture1, capture2, capture3, capture4, capture5,
+            capture6, capture7, capture8, capture9, capture10, transferCard1, transferCard2);
+        
         p2DiscardEl.classList.add(capture5.cardFace());
+
     };
 
     p1RevealEl.classList.remove('card', transferCard1.cardFace());

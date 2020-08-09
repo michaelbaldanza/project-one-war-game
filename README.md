@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # War
+=======
+## War
+>>>>>>> aee9ff2aaa2e4a144bd29761b0db6c833d0531eb
 
 ## Object of the Game
 
@@ -27,19 +31,35 @@ Victory will be declared for the first player to have all fifty-four cards in th
 
 # Screenshot
 
+<<<<<<< HEAD
 ![](war-screenshot.jpg);
 
 # Technologies Used
+=======
+## Screenshot
+
+![](war-screenshot.jpg);
+
+## Technologies Used
+>>>>>>> aee9ff2aaa2e4a144bd29761b0db6c833d0531eb
 
 HTML
 CSS
 JavaScript
 
+<<<<<<< HEAD
 # Getting Started
 
 http://michaelsbaldanza.github.io/project-one-war
 
 # Next Steps
+=======
+## Getting Started
+
+http://michaelsbaldanza.github.io/project-one-war
+
+## Next Steps
+>>>>>>> aee9ff2aaa2e4a144bd29761b0db6c833d0531eb
 
 Create winning conditions for ties to at least the fifth order.
 Improve styling. Add card counter, card animation, adjust board position on-screen, add more interesting background, move-by-move narration, eye-catching header.
