@@ -150,11 +150,6 @@ function winShuffleReveal() {
     p1RevealEl.classList.add('card', p1Deck[0].cardFace());
     p2RevealEl.classList.add('card', p2Deck[0].cardFace());
 
-    // if (p1Deck[0].getValue === p2Deck[0].getValue()) {
-    //     return alert('WAR is declared! Click the card to MEET YOUR FATE');
-    //     return warReveal();
-
-    // }
 };
 
 function play() {
@@ -224,16 +219,6 @@ function warDecision () {
     p2War2El.classList.remove('card', p2Deck[2].cardFace());
     p2War3El.classList.remove('card', p2Deck[3].cardFace());
     p2DecisionEl.classList.remove('card', p2Deck[4].cardFace());
-
-
-    // if (p1Deck.length === 0) {
-    //     p1Deck = shuffle(p1Discard);
-    // };
-
-    // if (p2Deck.length === 0) {
-    //     p2Deck = shuffle(p2Discard);
-    // };
-    // if ()
 
     let transferCard1 = p1Deck.shift();
     let transferCard2 = p2Deck.shift();
