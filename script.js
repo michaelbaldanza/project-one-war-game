@@ -138,9 +138,7 @@ function winShuffleReveal() {
 };
 
 function play() {
-    if (p1Deck[0].getValue() === p2Deck[0].getValue()) { 
-        if (p1Deck.length < 4) {p1Deck.replenishDeck};
-        if (p2Deck.length < 4) {p2Deck.replenishDeck};
+    if (p1Deck[0].getValue() === p2Deck[0].getValue()) {
         return warReveal();
     }
     else { 
@@ -175,6 +173,9 @@ function play() {
 };
 
 function warReveal() {
+    if (p1Deck.length < 4) {replenishDeck(p1Deck)};
+    if (p2Deck.length < 4) {replenishDeck(p2Deck)};
+
     p1War1El.classList.add('card', p1Deck[1].cardFace());
     p1War2El.classList.add('card', p1Deck[2].cardFace());
     p1War3El.classList.add('card', p1Deck[3].cardFace());
@@ -227,16 +228,21 @@ function warDecision () {
     if (capture5.getValue() > capture10.getValue()) {
         p1Discard.unshift(capture2, capture3, capture4, capture5,
             capture7, capture8, capture9, capture10, transferCard1, transferCard2);
+        if (p1Discard.length > 10) {
+            p1DiscardEl.classList.remove(p1Discard[10].cardFace());
+        };
         p1DiscardEl.classList.add(capture10.cardFace());
     } else {
         p2Discard.unshift(capture2, capture3, capture4, capture5,
             capture7, capture8, capture9, capture10, transferCard1, transferCard2);
+        if (p2Discard.length > 10) {
+            p2DiscardEl.classList.remove(p2Discard[10].cardFace());
+        };
         p2DiscardEl.classList.add(capture5.cardFace());
     };
 
     p1RevealEl.classList.remove('card', transferCard1.cardFace());
     p2RevealEl.classList.remove('card', transferCard2.cardFace());
-
     console.log(p1Discard);
     console.log(p2Discard);
     console.log(p1Deck);
@@ -259,10 +265,10 @@ function replenishDeck(inputDeck) {
             inputDeck.shift();
             cardsLeft.push(tempTransfer);
         };
-// replenish deck function breaks: probably at shuffle
-        if (inputDeck = p1Deck) {
-            inputDeck = p1Discard.shuffle();
-        } else {inputDeck = p2Discard.shuffle()};
+
+        if (p1Deck.length===0) {
+            inputDeck = shuffle(p1Discard);
+        }else {inputDeck = shuffle(p2Discard)};
 
         for (i=0; i <= cardsLeft.length; i++) {
             let transferIndex = cardsLeft.length - 1;
