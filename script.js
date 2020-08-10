@@ -6,12 +6,8 @@ class Card {
         this.cssname = cssname;
         this.value = value;
     };
-    cardFace () {
-        return this.cssname;
-    };
-    getValue () {
-        return this.value;
-    };
+    cardFace () {return this.cssname};
+    getValue () {return this.value};
 };
 
 let mDeck, p1Deck, p2Deck;
@@ -103,7 +99,7 @@ const p2War2El = document.getElementById('player2war2');
 const p2War3El = document.getElementById('player2war3');
 const p2RevealEl = document.getElementById('player2reveal');
 
-const vicDec = document.getElementById('victorydeclaration');
+const dialogue = document.getElementById('dialogue');
 
 // event listeners
 
@@ -125,27 +121,16 @@ function shuffle(inputDeck) {
 };
 
 function winShuffleReveal() {
-
     let p1Count = p1Discard.length + p1Deck.length;
     let p2Count = p2Discard.length + p2Deck.length;
     console.log(p1Count);
     console.log(p2Count);
 
-    if (p1Count.length === 54) {
-        return vicDec.textContent = 'Player 1 wins!';
-    };
+    if (p1Count.length === 54) {return dialogue.textContent = 'Player 1 wins!'};
+    if (p2Count.length === 54) {return dialogue.textContent = 'Player 2 wins!'};
 
-    if (p2Count.length === 54) {
-        return vicDec.textContent = 'Player 2 wins!';
-    };
-
-    if (p1Deck.length === 0) {
-        p1Deck = shuffle(p1Discard);
-    };
-
-    if (p2Deck.length === 0) {
-        p2Deck = shuffle(p2Discard);
-    };
+    if (p1Deck.length === 0) {p1Deck = shuffle(p1Discard)};
+    if (p2Deck.length === 0) {p2Deck = shuffle(p2Discard)};
 
     p1RevealEl.classList.add('card', p1Deck[0].cardFace());
     p2RevealEl.classList.add('card', p2Deck[0].cardFace());
@@ -153,11 +138,12 @@ function winShuffleReveal() {
 };
 
 function play() {
-    if (p1Deck[0].getValue() === p2Deck[0].getValue()) {
+    if (p1Deck[0].getValue() === p2Deck[0].getValue()) { 
+        if (p1Deck.length < 4) {p1Deck.replenishDeck};
+        if (p2Deck.length < 4) {p2Deck.replenishDeck};
         return warReveal();
     }
-    else {
-        
+    else { 
         let transferCard1 = p1Deck.shift();
         let transferCard2 = p2Deck.shift();
         console.log(transferCard1);
@@ -166,30 +152,23 @@ function play() {
         if (transferCard1.getValue() > transferCard2.getValue()) {
             p1Discard.unshift(transferCard1);
             p1Discard.unshift(transferCard2);
-
             if (p1Discard.length > 2) {
                 p1DiscardEl.classList.remove(p1Discard[2].cardFace());
             };
-            
             p1DiscardEl.classList.add(transferCard2.cardFace());
-
         } else {
             p2Discard.unshift(transferCard2);
             p2Discard.unshift(transferCard1);
-
             if (p2Discard.length > 2) {
                 p2DiscardEl.classList.remove(p2Discard[2].cardFace());
-            }
-            
+            };
             p2DiscardEl.classList.add(transferCard1.cardFace());
         };
 
         p1RevealEl.classList.remove('card', transferCard1.cardFace());
         p2RevealEl.classList.remove('card', transferCard2.cardFace());
-
         console.log(p1Discard);
         console.log(p1Deck);
-
         console.log(p2Discard);
         console.log(p2Deck);
     };
@@ -210,7 +189,6 @@ function warReveal() {
 }
 
 function warDecision () {
-
     p1War1El.classList.remove('card', p1Deck[1].cardFace());
     p1War2El.classList.remove('card', p1Deck[2].cardFace());
     p1War3El.classList.remove('card', p1Deck[3].cardFace());
@@ -228,8 +206,6 @@ function warDecision () {
     p1RevealEl.classList.remove('card', transferCard1.cardFace());
     p2RevealEl.classList.remove('card', transferCard2.cardFace());
 
-    let capture1 = p1Deck.shift();
-    console.log(capture1);
     let capture2 = p1Deck.shift();
     console.log(capture2);
     let capture3 = p1Deck.shift();
@@ -249,17 +225,13 @@ function warDecision () {
     console.log(capture10);
 
     if (capture5.getValue() > capture10.getValue()) {
-        p1Discard.unshift(capture1, capture2, capture3, capture4, capture5,
-            capture6, capture7, capture8, capture9, capture10, transferCard1, transferCard2);
-
+        p1Discard.unshift(capture2, capture3, capture4, capture5,
+            capture7, capture8, capture9, capture10, transferCard1, transferCard2);
         p1DiscardEl.classList.add(capture10.cardFace());
-
     } else {
-        p2Discard.unshift(capture1, capture2, capture3, capture4, capture5,
-            capture6, capture7, capture8, capture9, capture10, transferCard1, transferCard2);
-        
+        p2Discard.unshift(capture2, capture3, capture4, capture5,
+            capture7, capture8, capture9, capture10, transferCard1, transferCard2);
         p2DiscardEl.classList.add(capture5.cardFace());
-
     };
 
     p1RevealEl.classList.remove('card', transferCard1.cardFace());
@@ -269,4 +241,34 @@ function warDecision () {
     console.log(p2Discard);
     console.log(p1Deck);
     console.log(p2Deck);
+};
+
+function replenishDeck(inputDeck) {
+    let endCount1 = p1Discard.length + p1Deck.length;
+    let endCount2 = p2Discard.length + p2Discard.length;
+
+    if (endCount1 < 5) {
+        return dialogue.textContent = 'Player 2 wins!';
+    } else if (endCount2 < 5) {
+        return dialogue.textContent = 'Player 1 wins!';
+    } else {
+        let cardsLeft = [];
+
+        for (i = 0; i <= inputDeck.length; i++) {
+            let tempTransfer = p1Deck[0];
+            inputDeck.shift();
+            cardsLeft.push(tempTransfer);
+        };
+// replenish deck function breaks: probably at shuffle
+        if (inputDeck = p1Deck) {
+            inputDeck = p1Discard.shuffle();
+        } else {inputDeck = p2Discard.shuffle()};
+
+        for (i=0; i <= cardsLeft.length; i++) {
+            let transferIndex = cardsLeft.length - 1;
+            let tempTransfer = cardsLeft[transferIndex];
+            cardsLeft.pop();
+            inputDeck.unshift(tempTransfer);
+        };
+    };
 };
